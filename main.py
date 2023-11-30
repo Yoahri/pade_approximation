@@ -4,6 +4,7 @@ from sympy import symbols, exp, sin, diff, cos
 from generatepoints import generatepoints
 import matplotlib.pyplot as plt
 def main(func):
+    print("Padé para a seguinte função:", func)
     while True:
         try:
             m = int(input("m: "))
@@ -28,6 +29,7 @@ def main(func):
     points.sort()
     resultspade=[]
     resultfunc=[]
+
    
     for _ in points:
         value=ratio.subs([(x,_)]).evalf()
@@ -49,5 +51,14 @@ def main(func):
     plt.show()
 
 x= symbols('x', real=True)
-main(exp(x)*sin(x)*cos(x))
-main(exp(x)*sin(x)/cos(x)**2)
+while True:
+    main(exp(x)*sin(x)*cos(x))
+    y=input("Deseja contunar(s/n)?")
+    if y == "n":
+        break
+while True:
+    main(exp(x)*sin(x)/cos(x)**2)
+    y=input("Deseja continuar(s/n)?")
+    if y == "n":
+        break
+
